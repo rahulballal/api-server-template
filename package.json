@@ -12,8 +12,12 @@
   "devDependencies": {
     "chai": "4.1.2",
     "eslint": "4.7.2",
+    "eslint-config-airbnb-base": "12.0.0",
+    "eslint-plugin-import": "2.7.0",
     "jake": "8.0.15",
     "mocha": "3.5.3",
+    "nodemon": "1.12.1",
+    "nyc": "11.2.1",
     "sinon": "3.3.0"
   },
   "dependencies": {
