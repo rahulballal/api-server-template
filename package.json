@@ -26,6 +26,7 @@
     "fastify": "0.28.2",
     "fastify-helmet": "1.0.1",
     "joi": "11.0.3",
-    "newrelic": "2.2.1"
+    "newrelic": "2.2.1",
+    "pino": "4.7.2"
   }
 }
