@@ -4,7 +4,11 @@
   "description": "",
   "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon -w src -w config src/server.js",
+    "test:unit": "mocha --opts ./tests/mocha.opts ./tests/smoke/**/*.js",
+    "test:integration": "mocha --opts ./tests/mocha.opts ./tests/integration/**/*.js",
+    "test:smoke": "mocha --opts ./tests/mocha.opts ./tests/smoke/**/*.js"
+
   },
   "keywords": [],
   "author": "",
@@ -17,16 +21,21 @@
     "jake": "8.0.15",
     "mocha": "3.5.3",
     "nodemon": "1.12.1",
+    "npm-run-all": "4.1.1",
     "nyc": "11.2.1",
     "sinon": "3.3.0"
   },
   "dependencies": {
     "compression": "1.7.0",
     "config": "1.26.2",
+    "express-pino-logger": "2.0.0",
     "fastify": "0.28.2",
     "fastify-helmet": "1.0.1",
     "joi": "11.0.3",
     "newrelic": "2.2.1",
     "pino": "4.7.2"
+  },
+  "eslintConfig": {
+    "extends": "airbnb-base"
   }
 }
