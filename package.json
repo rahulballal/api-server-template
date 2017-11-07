@@ -8,7 +8,6 @@
     "test:unit": "mocha --opts ./tests/mocha.opts ./tests/smoke/**/*.js",
     "test:integration": "mocha --opts ./tests/mocha.opts ./tests/integration/**/*.js",
     "test:smoke": "mocha --opts ./tests/mocha.opts ./tests/smoke/**/*.js"
-
   },
   "keywords": [],
   "author": "",
