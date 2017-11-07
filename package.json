@@ -4,7 +4,8 @@
   "description": "",
   "main": "src/server.js",
   "scripts": {
-    "start": "nodemon -w src -w config src/server.js",
+    "start": "NODE_ENV=development nodemon -w src -w config src/server.js",
+    "start:prod": "NODE_ENV=production node .",
     "test:unit": "mocha --opts ./tests/mocha.opts ./tests/smoke/**/*.js",
     "test:integration": "mocha --opts ./tests/mocha.opts ./tests/integration/**/*.js",
     "test:smoke": "mocha --opts ./tests/mocha.opts ./tests/smoke/**/*.js"

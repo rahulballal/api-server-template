@@ -1,3 +1,5 @@
+const logger = require('../../core/logging');
+
 const opts = {
   body: {
     type: 'object',
@@ -19,9 +21,9 @@ const opts = {
 };
 
 function handler(req, res) {
-  const { log, body } = req;
-  log.info({ msg: body });
-  res.send({ resource: '/v1/demo/4' });
+  const { body } = req;
+  logger.info({ msg: body });
+  res.code(201).send({ resource: '/v1/demo/4' });
 }
 
 module.exports = { opts, handler };
