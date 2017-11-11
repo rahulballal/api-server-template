@@ -12,14 +12,18 @@ const app = fastify({
   logger: {
     level: config.get('logLevel'),
     prettyPrint: isDev(process.env.NODE_ENV),
-    name: 'myapp',
+    name: config.get('appName'),
     safe: true,
   },
 });
 
-app.register(helmet);
+// enable gzip compression
 app.use(compression());
 
+// enable security headers
+app.register(helmet);
+
+// configure application routes
 configureRoutes(app);
 
 module.exports = app;

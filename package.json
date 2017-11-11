@@ -6,9 +6,11 @@
   "scripts": {
     "start": "NODE_ENV=development nodemon -w src -w config src/server.js",
     "start:prod": "NODE_ENV=production node .",
+    "lint":"eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "run-s test:unit test:integration",
     "test:unit": "mocha --opts ./tests/mocha.opts ./tests/smoke/**/*.js",
-    "test:integration": "mocha --opts ./tests/mocha.opts ./tests/integration/**/*.js",
-    "test:smoke": "mocha --opts ./tests/mocha.opts ./tests/smoke/**/*.js"
+    "test:integration": "mocha --opts ./tests/mocha.opts ./tests/integration/**/*.js"
   },
   "keywords": [],
   "author": "",
@@ -31,11 +33,12 @@
     "express-pino-logger": "2.0.0",
     "fastify": "0.28.2",
     "fastify-helmet": "1.0.1",
-    "joi": "11.0.3",
-    "newrelic": "2.2.1",
     "pino": "4.7.2"
   },
   "eslintConfig": {
-    "extends": "airbnb-base"
+    "extends": "airbnb-base",
+    "env": {
+      "node": true
+    }
   }
 }

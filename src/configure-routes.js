@@ -1,4 +1,4 @@
-const ping = require('./handlers/ping');
+const ping = require('./handlers/meta');
 const demo = require('./handlers/demo');
 
 module.exports = (fastifyApp) => {

@@ -1,3 +1,9 @@
+/*
+  This file is the main entry point for the application.
+  Use this file to configure all infratructure things like:
+  NewRelic / Prometheus.io etc
+*/
+
 const config = require('config');
 const apiServer = require('./app');
 
