@@ -8,7 +8,12 @@ const logger = pino({
   level: config.get('logLevel'),
   prettyPrint: isDev(process.env.NODE_ENV),
   messageKey: 'msg',
-
 });
 
-module.exports = logger;
+const quietLogger = {
+  info() {},
+  error() {},
+  debug() {},
+};
+
+module.exports = process.env.NODE_ENV === 'test' ? quietLogger : logger;

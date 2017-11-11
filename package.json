@@ -1,22 +1,23 @@
 {
   "name": "api-server-template",
   "version": "1.0.0",
-  "description": "",
+  "description": "Template project for node.js HTTP apis",
   "main": "src/server.js",
   "scripts": {
     "start": "NODE_ENV=development nodemon -w src -w config src/server.js",
     "start:prod": "NODE_ENV=production node .",
-    "lint":"eslint .",
+    "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "run-s test:unit test:integration",
-    "test:unit": "mocha --opts ./tests/mocha.opts ./tests/smoke/**/*.js",
-    "test:integration": "mocha --opts ./tests/mocha.opts ./tests/integration/**/*.js"
+    "test:unit": "nyc mocha --opts ./src/mocha.opts ./src/**/*.spec.js --exit",
+    "test:integration": "NODE_ENV=test mocha --opts ./tests/mocha.opts ./tests/app.spec.js --exit"
   },
   "keywords": [],
-  "author": "",
+  "author": "Rahul Ballal",
   "license": "ISC",
   "devDependencies": {
     "chai": "4.1.2",
+    "dirty-chai": "2.0.1",
     "eslint": "4.7.2",
     "eslint-config-airbnb-base": "12.0.0",
     "eslint-plugin-import": "2.7.0",
@@ -25,7 +26,9 @@
     "nodemon": "1.12.1",
     "npm-run-all": "4.1.1",
     "nyc": "11.2.1",
-    "sinon": "3.3.0"
+    "proxyquire": "1.8.0",
+    "sinon": "3.3.0",
+    "supertest": "3.0.0"
   },
   "dependencies": {
     "compression": "1.7.0",
@@ -38,7 +41,9 @@
   "eslintConfig": {
     "extends": "airbnb-base",
     "env": {
-      "node": true
-    }
+      "node": true,
+      "mocha": true
+    },
+    "globals": { "sinon": true }
   }
 }
