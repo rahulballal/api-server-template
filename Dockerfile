@@ -1,8 +1,10 @@
-FROM node:8.5.0-alpine
+FROM node:8.9.0-alpine
 
 ENV TZ Australia/Sydney
 
 EXPOSE 3000
+
+USER node
 
 WORKDIR /var/app
 

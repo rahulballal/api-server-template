@@ -10,7 +10,10 @@
     "lint:fix": "eslint . --fix",
     "test": "run-s test:unit test:e2e",
     "test:unit": "NODE_ENV=test nyc mocha --opts ./mocha/mocha.opts ./src/**/*.spec.js",
-    "test:e2e": "NODE_ENV=test mocha --opts ./mocha/mocha.opts ./e2e/app.spec.js"
+    "test:e2e": "NODE_ENV=test mocha --opts ./mocha/mocha.opts ./e2e/app.spec.js",
+    "preci": "npm install",
+    "ci": "run-s lint test",
+    "postci": "npm prune --production"
   },
   "files": [
     "src/**/**",
