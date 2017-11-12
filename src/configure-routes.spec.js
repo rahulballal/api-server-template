@@ -8,7 +8,7 @@ const configureRoutes = proxyquire('./configure-routes', {
   },
 });
 
-describe('condigure-router', () => {
+describe('configure-router', () => {
   let sandbox = null;
   before(() => {
     sandbox = sinon.sandbox.create();

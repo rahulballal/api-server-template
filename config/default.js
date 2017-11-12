@@ -1,5 +1,5 @@
 module.exports = {
-  port: 3000,
-  appName: 'API Server',
+  port: process.env.PORT || 3000,
+  appName: 'API-Server',
   logLevel: 'info',
 };

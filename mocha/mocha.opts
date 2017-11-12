@@ -1,5 +1,5 @@
 --ui bdd
 --reporter spec
--r ./src/spec-setup.js
 --full-trace
+--require mocha/setup.js
 --exit

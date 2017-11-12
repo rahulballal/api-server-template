@@ -8,11 +8,12 @@
     "start:prod": "NODE_ENV=production node .",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "test": "run-s test:unit test:integration",
-    "test:unit": "nyc mocha --opts ./src/mocha.opts ./src/**/*.spec.js --exit",
-    "test:integration": "NODE_ENV=test mocha --opts ./tests/mocha.opts ./tests/app.spec.js --exit"
+    "test": "run-s test:unit test:e2e",
+    "test:unit": "NODE_ENV=test nyc mocha --opts ./mocha/mocha.opts ./src/**/*.spec.js",
+    "test:e2e": "NODE_ENV=test mocha --opts ./mocha/mocha.opts ./e2e/app.spec.js"
   },
-  "keywords": [],
+  "files": ["src/**/**", "config/**/**", "package.json"],
+  "keywords": ["api", "template", "http", "cd-ready"],
   "author": "Rahul Ballal",
   "license": "ISC",
   "devDependencies": {
@@ -45,5 +46,15 @@
       "mocha": true
     },
     "globals": { "sinon": true }
+  },
+  "nyc": {
+    "exclude": ["**/*/*.spec.js"],
+    "reporter": ["lcov", "text-summary"],
+    "watermarks": {
+      "lines": [80, 95],
+      "functions": [80, 95],
+      "branches": [80, 95],
+      "statements": [80, 95]
+    }
   }
 }
