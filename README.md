@@ -2,7 +2,7 @@
 
 A template project for Node.js HTTP API
 
-## Key Features
+## Key Features :sparkles:
 
 1. Uses latest LTS node.js (v8.9.x)
 2. Builds a lightweight (Node Alpine) Docker container following best practices.
