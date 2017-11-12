@@ -8,6 +8,7 @@ A template project for Node.js HTTP API
 2. Builds a lightweight (Node Alpine) Docker container following best practices.
 3. Uses [node-config](https://github.com/lorenwest/node-config) for easy config management.
 4. A functional Jenkinsfile for CI/CD, setup to be configured with Nomad/Kubernetes container orchestration.
+5. Super fast [pino.js](http://getpino.io/#/) logger
 
 ## Description
 
