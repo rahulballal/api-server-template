@@ -9,6 +9,7 @@ A template project for Node.js HTTP API
 3. Uses [node-config](https://github.com/lorenwest/node-config) for easy config management.
 4. A functional Jenkinsfile for CI/CD, setup to be configured with Nomad/Kubernetes container orchestration.
 5. Super fast [pino.js](http://getpino.io/#/) logger
+6. Follow these simple [steps](./docs/Steps.md) to use this template.
 
 ## Description
 
