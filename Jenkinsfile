@@ -1,6 +1,6 @@
 parameters {
   string(name: "ARTIFACT_NAME", defaultValue: "NONE", description: "Docker Tag for Deployment"),
-  choice(name: "APP_ENVIRONMENT", choices: "NONE\nSTAGE\nPRODUCTION\nUAT")
+  choice(name: "APP_ENVIRONMENT", choices: "NONE\nSTAGE\nPRODUCTION")
 }
 
 node('linux') {
@@ -14,6 +14,8 @@ node('linux') {
     BRANCH: "${env.BRANCH_NAME}",
     TAG: "${env.BRANCH_NAME}-${repo.buildnumber}"
   ]
+
+  def NOMAD_CONF = readJson file:'./infra/nomad-settings.json'
 
   docker.inside(BUILD_BOX) {
     stage('Prepare') {
@@ -38,8 +40,24 @@ node('linux') {
   }
 
 
+  stage('CloudFormation') {
+    if (params.APP_ENVIRONMENT == 'STAGE') {
+      cfnUpdate stack:"s-${CONF.APP_NAME}", file:"./infra/stage-cf.yml"
+    }
+
+    if (params.APP_ENVIRONMENT == 'PRODUCTION') {
+      cfnUpdate stack:"p-${CONF.APP_NAME}", file:"./infra/prod-cf.yml"
+    } else {
+      echo "Skipping CloufFormation"
+    }
+  }
 
   stage('Nomad:Deploy') {
+    def currentNomadConf = NOMAD_CONF[params.APP_ENVIRONMENT]
+    if (currentNomadConf) {
+      def Nomad = load "./infra/nomad-deployment.groovy"
+      Nomad.SubmitJob(currentNomadConf, params.APP_ENVIRONMENT, params.ARTIFACT_NAME)
+    }
 
   }
 

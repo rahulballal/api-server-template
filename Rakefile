@@ -21,7 +21,8 @@ end
 
 desc "Default Task"
 task :default do
-  puts "No Default Task specified"
+  name = ENV['NAME'] || "world"
+  puts "Hello #{name}"
 end
 
 desc "Build Docker Container"
