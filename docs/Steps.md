@@ -2,7 +2,7 @@
 
 ## Git
 
-[] After cloning this repo, blow away the .git folder
+1. After cloning this repo, blow away the .git folder
 
 ## NPM
 
