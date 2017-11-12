@@ -12,8 +12,17 @@
     "test:unit": "NODE_ENV=test nyc mocha --opts ./mocha/mocha.opts ./src/**/*.spec.js",
     "test:e2e": "NODE_ENV=test mocha --opts ./mocha/mocha.opts ./e2e/app.spec.js"
   },
-  "files": ["src/**/**", "config/**/**", "package.json"],
-  "keywords": ["api", "template", "http", "cd-ready"],
+  "files": [
+    "src/**/**",
+    "config/**/**",
+    "package.json"
+  ],
+  "keywords": [
+    "api",
+    "template",
+    "http",
+    "cd-ready"
+  ],
   "author": "Rahul Ballal",
   "license": "ISC",
   "devDependencies": {
@@ -22,7 +31,6 @@
     "eslint": "4.7.2",
     "eslint-config-airbnb-base": "12.0.0",
     "eslint-plugin-import": "2.7.0",
-    "jake": "8.0.15",
     "mocha": "3.5.3",
     "nodemon": "1.12.1",
     "npm-run-all": "4.1.1",
@@ -45,16 +53,35 @@
       "node": true,
       "mocha": true
     },
-    "globals": { "sinon": true }
+    "globals": {
+      "sinon": true
+    }
   },
   "nyc": {
-    "exclude": ["**/*/*.spec.js"],
-    "reporter": ["lcov", "text-summary"],
+    "exclude": [
+      "**/*/*.spec.js"
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ],
     "watermarks": {
-      "lines": [80, 95],
-      "functions": [80, 95],
-      "branches": [80, 95],
-      "statements": [80, 95]
+      "lines": [
+        80,
+        95
+      ],
+      "functions": [
+        80,
+        95
+      ],
+      "branches": [
+        80,
+        95
+      ],
+      "statements": [
+        80,
+        95
+      ]
     }
   }
 }
