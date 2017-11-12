@@ -69,12 +69,12 @@ _For example `my-module.js` will be colocated with `my-module.spec.js` file._
 
 ### [Rakefile](https://ruby.github.io/rake/)
 
-*Why not just use npm scripts or Grunt or Gulp?*
+#### Why not just use npm scripts or Grunt or Gulp?
 
 We want to ensure that we are able to run scripts after devDependencies have been pruned for the project. One way is to manipulate how and when devDependencies are installed or keep the logic simple. All the CI/CD orchestration is baked into
 the Rakefile.
 
-*Why not bake all CI CD logic in the Jenkinsfile?*
+#### Why not bake all CI CD logic in the Jenkinsfile?
 
 From my experience baking deployment/build logic in Jenkinsfile/Groovy is extremely painful.
 Rakefile is a modern version of a task system much like Make. It is an extremely flexible and testable task system.
@@ -84,21 +84,21 @@ Having a file like this helps the repository portable with any kind of CI/CD too
 
 ### [Jenkins](https://jenkins.io) with Scripted Pipelines
 
-*When a commit happens on master branch*
+#### When a commit happens on master branch
 
 - Run ci
 - Build Docker container
 - Publish Docker container
 - Publish Nomad Job to default environment (eg: STAGE)
 
-*When a commit happens on a hotfix branch*
+#### When a commit happens on a hotfix branch
 
 - Run ci
 - Build Docker container
 - Publish Docker container
 - Publish Nomad Job to PRODUCTION environment
 
-*Deploying to an environment using Docker Artifact*
+#### Deploying to an environment using Docker Artifact
 
 - Go to Jenkins
 - Navigate to the Job
