@@ -82,7 +82,7 @@ Having a file like this helps the repository portable with any kind of CI/CD too
 
 *NOTE: The CI/CD runtime must include node.js , Ruby and Rake. This is only required at build time*
 
-### [Jenkins](https://jenkins.io)
+### [Jenkins](https://jenkins.io) with Scripted Pipelines
 
 *When a commit happens on master branch*
 
