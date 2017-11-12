@@ -50,7 +50,18 @@ _For example `my-module.js` will be colocated with `my-module.spec.js` file._
 
 - A feature complete Http API and connect based applications
 
+### [nyc Code Coverage](https://istanbul.js.org/)
+
+- De-facto javascript code coverage tool.
+
 ## CI/CD
+
+### CloudFormation to create cloud resources
+
+- All cloudformation stacks are located at [infra](./infra) directory
+
+  - [prod-cf.yml](./infra/prod-cf.yml) for PRODUCTION
+  - [stage-cf.yml](./infra/stage-cf.yml) for STAGE
 
 ### [npm-run-all](https://www.npmjs.com/package/npm-run-all)
 
@@ -58,42 +69,56 @@ _For example `my-module.js` will be colocated with `my-module.spec.js` file._
 
 ### [Rakefile](https://ruby.github.io/rake/)
 
-_Why not just use npm scripts or Grunt or Gulp?_
+*Why not just use npm scripts or Grunt or Gulp?*
 
 We want to ensure that we are able to run scripts after devDependencies have been pruned for the project. One way is to manipulate how and when devDependencies are installed or keep the logic simple. All the CI/CD orchestration is baked into
 the Rakefile.
 
-_Why not bake all CI CD logic in the Jenkinsfile?_
+*Why not bake all CI CD logic in the Jenkinsfile?*
 
 From my experience baking deployment/build logic in Jenkinsfile/Groovy is extremely painful.
 Rakefile is a modern version of a task system much like Make. It is an extremely flexible and testable task system.
 Having a file like this helps the repository portable with any kind of CI/CD tool. Jenkins has been configured in this case.
 
-_NOTE: The CI/CD runtime must include node.js , Ruby and Rake. This is only required at build time_
+*NOTE: The CI/CD runtime must include node.js , Ruby and Rake. This is only required at build time*
 
 ### [Jenkins](https://jenkins.io)
 
-_When a commit happens on master branch_
+*When a commit happens on master branch*
 
 - Run ci
 - Build Docker container
 - Publish Docker container
 - Publish Nomad Job to default environment (eg: STAGE)
 
-_When a commit happens on a hotfix branch_
+*When a commit happens on a hotfix branch*
 
 - Run ci
 - Build Docker container
 - Publish Docker container
 - Publish Nomad Job to PRODUCTION environment
 
-_Deploying to an environment using Docker Artifact_
+*Deploying to an environment using Docker Artifact*
 
 - Go to Jenkins
 - Navigate to the Job
 - Build with Parmeters
 - Fill out the form
 
-  - Provide the ARTIFACT_NAME e.g. api-server-template:latest
+  - Provide the ARTIFACT_NAME e.g. `api-server-template:latest`
   - Pick an environment to deploy
   - Click Build
+
+## Container Scheduler / Orchestrator
+
+It is extremely common these days to to use a Container orchestration and scheduling system like :
+
+- [Nomad](https://www.nomadproject.io/)
+- [Kubernetes](https://kubernetes.io/)
+
+Because a system like this is considered infrastructure related:
+
+- [infra/nomad-settings.json](./infra/nomad-settings.json)
+- [infra/nomad-deployment.groovy](./infra/nomad-deployment.groovy)
+
+Both these files are consumed in the [Jenkinsfile](./Jenkinsfile).
