@@ -48,7 +48,7 @@ node('linux') {
     if (params.APP_ENVIRONMENT == 'PRODUCTION') {
       cfnUpdate stack:"p-${CONF.APP_NAME}", file:"./infra/prod-cf.yml"
     } else {
-      echo "Skipping CloufFormation"
+      echo "Skipping CloudFormation"
     }
   }
 
